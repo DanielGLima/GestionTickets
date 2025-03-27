@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestiontickets.InicioController">
    <children>
       <AnchorPane layoutX="-1.0" maxHeight="-1.0" maxWidth="-1.0" prefHeight="483.0" prefWidth="853.0" style="-fx-background-color: #7f8c8d;">
          <children>
@@ -47,7 +47,7 @@
                <children>
                   <ImageView fitHeight="152.0" fitWidth="175.0" layoutX="34.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../GestionDeTickets/src/main/resources/Images/ticket-de-soporte.png" />
+                        <Image url="@../../../images/ticket-de-soporte.png" />
                      </image>
                   </ImageView>
                </children>
