@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="483.0" prefWidth="853.0" style="-fx-background-color: #7f8c8d;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestiontickets.CreacionDeUsuariosController">
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="483.0" prefWidth="853.0" style="-fx-background-color: #7f8c8d;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestiontickets.CreacionDeUsuariosController">
    <children>
       <TextField fx:id="nombreCompletoField" layoutX="597.0" layoutY="122.0" style="-fx-border-color: #000000;" />
       <TextField fx:id="correoField" layoutX="597.0" layoutY="169.0" style="-fx-border-color: #000000;" />
@@ -42,7 +42,7 @@
          <children>
             <ImageView fitHeight="152.0" fitWidth="175.0" layoutX="34.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/ticket-de-soporte.png" />
+                  <Image url="@../../../../../../../GestionDeTickets/src/main/resources/Images/ticket-de-soporte.png" />
                </image>
             </ImageView>
          </children>
