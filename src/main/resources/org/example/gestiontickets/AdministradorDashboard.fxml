@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="483" prefWidth="853" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestiontickets.AdministradorDashboardController">
+<AnchorPane prefHeight="483" prefWidth="853" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestiontickets.AdministradorDashboardController">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="483.0" prefWidth="853.0" style="-fx-background-color: #7f8c8d;">
          <children>
