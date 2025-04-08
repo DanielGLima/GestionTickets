@@ -16,6 +16,16 @@ public class main extends Application {
         stage.setScene(scene);
         stage.show();
     }
+//    public void start(Stage stage) throws IOException {
+//        // Cambiamos "Inicio.fxml" por "AdministradorDashboard.fxml"
+//        // para cargar el dashboard del administrador directamente
+//        FXMLLoader fxmlLoader = new FXMLLoader(main.class.getResource("AdministradorDashboard.fxml"));
+
+//        Scene scene = new Scene(fxmlLoader.load(), 853, 483);
+//        stage.setTitle("Sistema de Tickets");
+//        stage.setScene(scene);
+//        stage.show();
+//    }
 
     public static void main(String[] args) {
         launch();
