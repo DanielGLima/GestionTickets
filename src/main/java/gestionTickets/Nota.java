@@ -1,14 +1,14 @@
 package gestionTickets;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Nota {
     private Persona autor;
     private String contenido;
-    private LocalDate fecha;
+    private LocalDateTime fecha;
 
     //Constructor
-    public Nota(Persona autor, String contenido, LocalDate fecha) {
+    public Nota(Persona autor, String contenido, LocalDateTime fecha) {
         this.autor = autor;
         this.contenido = contenido;
         this.fecha = fecha;
@@ -32,11 +32,11 @@ public class Nota {
         this.contenido = contenido;
     }
 
-    public LocalDate getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 }

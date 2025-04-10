@@ -1,12 +1,15 @@
 package gestionTickets;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Ticket {
     private String idTicket;
     private String titulo;
     private String descripcion;
-    private LocalDate fechaCreacion;
+    private LocalDateTime fechaCreacion;
     private EstadoTicket estadoActual;
     private Usuario usuarioCreador;
     private Tecnico tecnicoAsignado;
@@ -17,7 +20,7 @@ public class Ticket {
     //Constructor
 
 
-    public Ticket(String idTicket, String titulo, String descripcion, LocalDate fechaCreacion, EstadoTicket estadoActual, Usuario usuarioCreador, Tecnico tecnicoAsignado, Departamento departamento, List<Nota> notas) {
+    public Ticket(String idTicket, String titulo, String descripcion, LocalDateTime fechaCreacion, EstadoTicket estadoActual, Usuario usuarioCreador, Tecnico tecnicoAsignado, Departamento departamento, List<Nota> notas) {
         this.idTicket = idTicket;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -55,11 +58,11 @@ public class Ticket {
         this.descripcion = descripcion;
     }
 
-    public LocalDate getFechaCreacion() {
+    public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(LocalDate fechaCreacion) {
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
