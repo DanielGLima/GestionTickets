@@ -15,12 +15,13 @@ public class Ticket {
     private Tecnico tecnicoAsignado;
     private Departamento departamento;
     private List<Nota> notas;
+    private List<Ticket> ticketsDelSistema;
 
 
     //Constructor
 
 
-    public Ticket(String idTicket, String titulo, String descripcion, LocalDateTime fechaCreacion, EstadoTicket estadoActual, Usuario usuarioCreador, Tecnico tecnicoAsignado, Departamento departamento, List<Nota> notas) {
+    public Ticket(String idTicket, String titulo, String descripcion, LocalDateTime fechaCreacion, EstadoTicket estadoActual, Usuario usuarioCreador, Tecnico tecnicoAsignado, Departamento departamento, List<Nota> notas, List<Ticket> ticketsDelSistema) {
         this.idTicket = idTicket;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -30,6 +31,7 @@ public class Ticket {
         this.tecnicoAsignado = tecnicoAsignado;
         this.departamento = departamento;
         this.notas = notas;
+        this.ticketsDelSistema = ticketsDelSistema;
     }
 
     //Getters y Setters
@@ -104,5 +106,19 @@ public class Ticket {
 
     public void setNotas(List<Nota> notas) {
         this.notas = notas;
+    }
+
+    public List<Ticket> getTicketsDelSistema() {
+        return ticketsDelSistema;
+    }
+
+    public void setTicketsDelSistema(List<Ticket> ticketsDelSistema) {
+        this.ticketsDelSistema = ticketsDelSistema;
+    }
+//Metodos
+
+    //El metodo debe permitir agregar una nueva nota a la lista, No debe sobreescribir a la lista ni reiniciarse.
+    public void agregarNota(Nota nota){
+        notas.add(nota);
     }
 }
