@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="26.2.9">
   <diagram name="Página-1" id="my5Dj4hXitWMFPk3smrs">
-    <mxGraphModel dx="1457" dy="1521" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2284" dy="1997" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -150,7 +150,7 @@
         <mxCell id="FS9Zcyxy9WQjL2UhPZTN-54" value="- notas : List&amp;lt;Nota&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="FS9Zcyxy9WQjL2UhPZTN-40" vertex="1">
           <mxGeometry y="234" width="260" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="_mpN0GF_lTgWEC3z65mC-1" value="- ticketsDelSistema : List&amp;lt;Ticket&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="FS9Zcyxy9WQjL2UhPZTN-40">
+        <mxCell id="_mpN0GF_lTgWEC3z65mC-1" value="- ticketsDelSistema : List&amp;lt;Ticket&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="FS9Zcyxy9WQjL2UhPZTN-40" vertex="1">
           <mxGeometry y="260" width="260" height="26" as="geometry" />
         </mxCell>
         <mxCell id="FS9Zcyxy9WQjL2UhPZTN-57" value="- historialEstados: Stack&amp;lt;EstadoTicket&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="FS9Zcyxy9WQjL2UhPZTN-40" vertex="1">
@@ -337,12 +337,13 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="FS9Zcyxy9WQjL2UhPZTN-109" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;fontSize=12;curved=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="FS9Zcyxy9WQjL2UhPZTN-87" target="FS9Zcyxy9WQjL2UhPZTN-2" edge="1">
+        <mxCell id="FS9Zcyxy9WQjL2UhPZTN-109" value="" style="endArrow=diamondThin;endFill=0;endSize=24;html=1;rounded=0;fontSize=12;curved=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.47;entryY=0.974;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="FS9Zcyxy9WQjL2UhPZTN-87" target="FS9Zcyxy9WQjL2UhPZTN-37" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="220" y="500" as="sourcePoint" />
-            <mxPoint x="380" y="500" as="targetPoint" />
+            <mxPoint x="1040" y="560" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="50" y="40" />
+              <mxPoint x="50" y="680" />
+              <mxPoint x="1049" y="680" />
             </Array>
           </mxGeometry>
         </mxCell>

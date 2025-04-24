@@ -9,6 +9,7 @@ module org.example.gestiontickets {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens org.example.gestiontickets to javafx.fxml;
     exports org.example.gestiontickets;
