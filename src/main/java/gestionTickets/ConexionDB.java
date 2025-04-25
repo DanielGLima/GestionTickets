@@ -9,6 +9,7 @@ public class ConexionDB {
     private static final String USER = "<bdTickets_owner>";
     private static final String PASSWORD = "<npg_X1ZoHmCNYl2K>";
 
+
     public static Connection conectar() {
         try {
             System.out.println("Conectado con exito");

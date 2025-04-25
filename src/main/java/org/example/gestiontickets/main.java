@@ -18,6 +18,7 @@ public class main extends Application {
     }
 
 
+
 //    public void start(Stage stage) throws IOException {
 //        // Cambiamos "Inicio.fxml" por "AdministradorDashboard.fxml"
 //        // para cargar el dashboard del administrador directamente
