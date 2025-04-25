@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UsuarioCRUD {
-
+// prueba update
     // 🔹 CREAR USUARIO
     public void crearUsuario(String nombreCompleto, String correoElectronico, String nombreUsuario, String contrasena, String telefono, int rolId) {
         String sql = "INSERT INTO Usuario (nombre_completo, correo_electronico, nombre_usuario, contrasena, telefono, rol_id, departamento_id, estado) "
