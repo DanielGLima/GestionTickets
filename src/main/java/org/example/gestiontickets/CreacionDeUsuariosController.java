@@ -43,5 +43,29 @@ public class CreacionDeUsuariosController {
                 e.printStackTrace();
             }
         });
+
+        registrarButton.setOnAction(event -> {
+            String nombre = nombreCompletoField.getText();
+            String correo = correoField.getText();
+            String telefono = telefonoField.getText();
+            String contrasena = contrasenaField.getText();
+            String confirmar = confirmarContrasenaField.getText();
+
+            if (!contrasena.equals(confirmar)) {
+                System.out.println("⚠️ Las contraseñas no coinciden.");
+                return;
+            }
+
+            gestionTickets.CRUD.UsuarioCRUD crud = new gestionTickets.CRUD.UsuarioCRUD();
+            crud.crearUsuario(
+                    nombre,
+                    correo,
+                    correo,     // usamos el correo como nombre_usuario por ahora
+                    contrasena,
+                    telefono,
+                    3           // ID del rol (ajustar según tu base de datos)
+            );
+        });
+
     }
 }
