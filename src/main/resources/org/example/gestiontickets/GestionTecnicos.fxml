@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="483.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestiontickets.GestionTecnicosController">
+   <children>
+      <AnchorPane prefHeight="483.0" prefWidth="853.0" style="-fx-background-color: #7f8c8d;">
+         <children>
+            <ImageView fitHeight="70.0" fitWidth="77.0" layoutX="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/ticket-de-soporte.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="240.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTION DE TECNICOS">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <AnchorPane layoutX="-1.0" layoutY="70.0" prefHeight="416.0" prefWidth="854.0" style="-fx-background-color: #A9A9A9;">
+               <children>
+                  <TextField fx:id="filtroNombre" layoutX="58.0" layoutY="31.0" prefHeight="43.0" prefWidth="322.0" promptText="Buscar Tecnico..." />
+                  <TextField fx:id="filtroDepartamento" layoutX="473.0" layoutY="31.0" prefHeight="43.0" prefWidth="322.0" promptText="Filtrar por departamento" />
+                  <TableView fx:id="tablaTecnicos" layoutX="58.0" layoutY="91.0" prefHeight="222.0" prefWidth="738.0">
+                    <columns>
+                      <TableColumn fx:id="colId" prefWidth="84.79998779296875" text="ID" />
+                      <TableColumn fx:id="colNombre" prefWidth="291.20001220703125" text="Nombre Completo" />
+                        <TableColumn fx:id="colCorreo" prefWidth="167.199951171875" text="Correo" />
+                        <TableColumn fx:id="colDepartamento" prefWidth="196.0" text="Departamento" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="botonAgregarTecnico" layoutX="58.0" layoutY="336.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="172.0" text="Agregar Tecnico" />
+                  <Button fx:id="botonEditarTecnico" layoutX="249.0" layoutY="336.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="172.0" text="Editar Tecnico" />
+                  <Button fx:id="botonEliminarTecnico" layoutX="435.0" layoutY="336.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="172.0" text="Eliminar Tecnico" />
+                  <Button fx:id="botonAsignarDepartamento" layoutX="624.0" layoutY="336.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="172.0" text="Asignar Departamento" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
