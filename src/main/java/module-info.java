@@ -10,7 +10,10 @@ module org.example.gestiontickets {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires java.desktop;
 
     opens org.example.gestiontickets to javafx.fxml;
+    opens gestionTickets to javafx.base;
+
     exports org.example.gestiontickets;
 }

@@ -1,0 +1,117 @@
+-- Tabla: Rol
+CREATE TABLE Rol (
+                     rol_id SERIAL PRIMARY KEY,
+                     nombre VARCHAR(50) NOT NULL UNIQUE,
+                     descripcion TEXT
+);
+
+-- Tabla: Permiso
+CREATE TABLE Permiso (
+                         permiso_id SERIAL PRIMARY KEY,
+                         nombre VARCHAR(50) NOT NULL UNIQUE,
+                         descripcion TEXT
+);
+
+-- Tabla intermedia: RolPermiso (N:M)
+CREATE TABLE RolPermiso (
+                            rol_id INT REFERENCES Rol(rol_id) ON DELETE CASCADE,
+                            permiso_id INT REFERENCES Permiso(permiso_id) ON DELETE CASCADE,
+                            PRIMARY KEY (rol_id, permiso_id)
+);
+
+-- Tabla: Departamento
+CREATE TABLE Departamento (
+                              departamento_id SERIAL PRIMARY KEY,
+                              nombre VARCHAR(50) NOT NULL UNIQUE,
+                              descripcion TEXT
+);
+
+-- Tabla: Usuario
+CREATE TABLE Usuario (
+                         usuario_id SERIAL PRIMARY KEY,
+                         nombre_completo VARCHAR(100) NOT NULL,
+                         correo_electronico VARCHAR(100) NOT NULL UNIQUE,
+                         nombre_usuario VARCHAR(30) NOT NULL UNIQUE,
+                         contrasena VARCHAR(255) NOT NULL,
+                         rol_id INT NOT NULL REFERENCES Rol(rol_id),
+                         departamento_id INT REFERENCES Departamento(departamento_id),
+                         estado BOOLEAN DEFAULT TRUE
+);
+
+-- Tabla: EstadoTicket
+CREATE TABLE EstadoTicket (
+                              estado_id SERIAL PRIMARY KEY,
+                              nombre VARCHAR(50) NOT NULL UNIQUE,
+                              descripcion TEXT,
+                              es_final BOOLEAN DEFAULT FALSE
+);
+
+-- Tabla: Ticket
+CREATE TABLE Ticket (
+                        ticket_id SERIAL PRIMARY KEY,
+                        titulo VARCHAR(100) NOT NULL,
+                        descripcion TEXT NOT NULL,
+                        fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                        estado_id INT NOT NULL REFERENCES EstadoTicket(estado_id),
+                        usuario_id INT NOT NULL REFERENCES Usuario(usuario_id), -- solicitante
+                        tecnico_id INT REFERENCES Usuario(usuario_id),           -- técnico
+                        departamento_id INT NOT NULL REFERENCES Departamento(departamento_id),
+                        prioridad VARCHAR(10) NOT NULL CHECK (prioridad IN ('Alta', 'Media', 'Baja'))
+);
+
+-- Tabla: TransicionEstado
+CREATE TABLE TransicionEstado (
+                                  estado_origen_id INT REFERENCES EstadoTicket(estado_id),
+                                  estado_destino_id INT REFERENCES EstadoTicket(estado_id),
+                                  regla TEXT,
+                                  accion_automatica TEXT,
+                                  PRIMARY KEY (estado_origen_id, estado_destino_id)
+);
+
+-- Tabla: Nota (sin adjunto)
+CREATE TABLE Nota (
+                      nota_id SERIAL PRIMARY KEY,
+                      ticket_id INT NOT NULL REFERENCES Ticket(ticket_id) ON DELETE CASCADE,
+                      usuario_id INT NOT NULL REFERENCES Usuario(usuario_id),
+                      contenido TEXT NOT NULL,
+                      fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla: HistorialEstado
+CREATE TABLE HistorialEstado (
+                                 historial_id SERIAL PRIMARY KEY,
+                                 ticket_id INT NOT NULL REFERENCES Ticket(ticket_id) ON DELETE CASCADE,
+                                 estado_anterior INT REFERENCES EstadoTicket(estado_id),
+                                 estado_nuevo INT REFERENCES EstadoTicket(estado_id),
+                                 usuario_id INT REFERENCES Usuario(usuario_id),
+                                 fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla: ParametroSistema
+CREATE TABLE ParametroSistema (
+                                  clave VARCHAR(50) PRIMARY KEY,
+                                  valor TEXT NOT NULL
+);
+
+-- Tabla: FlujoTrabajo
+CREATE TABLE FlujoTrabajo (
+                              flujo_id SERIAL PRIMARY KEY,
+                              nombre VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- Tabla: FlujoEstado (N:M entre Flujo y Estado)
+CREATE TABLE FlujoEstado (
+                             flujo_id INT REFERENCES FlujoTrabajo(flujo_id) ON DELETE CASCADE,
+                             estado_id INT REFERENCES EstadoTicket(estado_id),
+                             PRIMARY KEY (flujo_id, estado_id)
+);
+ALTER TABLE Usuario
+    ADD COLUMN telefono VARCHAR(20);
+
+
+INSERT INTO Rol (rol_id, nombre, descripcion) VALUES
+                                                  (1, 'Administrador', 'Acceso total'),
+                                                  (2, 'Tecnico', 'Gestiona tickets asignados'),
+                                                  (3, 'Usuario', 'Solicita soporte');
+
+\

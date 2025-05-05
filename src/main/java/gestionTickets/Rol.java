@@ -40,4 +40,10 @@ public class Rol {
     public void setPermisos(List<String> permisos) {
         this.permisos = permisos;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
 }

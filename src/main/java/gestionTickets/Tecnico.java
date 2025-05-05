@@ -1,44 +1,76 @@
 package gestionTickets;
 
-public class Tecnico extends Persona {
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
-    private Departamento departamento;
+public class Tecnico {
 
-    //Getters y Setters
+    private String idTecnico;
+    private final StringProperty nombre;
+    private final StringProperty correo;
+    private final StringProperty telefono;
 
-
-    public Departamento getDepartamento() {
-        return departamento;
+    // Constructor con ID
+    public Tecnico(String idTecnico, String nombre, String correo, String telefono) {
+        this.idTecnico = idTecnico;
+        this.nombre = new SimpleStringProperty(nombre);
+        this.correo = new SimpleStringProperty(correo);
+        this.telefono = new SimpleStringProperty(telefono);
     }
 
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
+    // Constructor sin ID (para pruebas o creación desde interfaz)
+    public Tecnico(String nombre, String correo, String telefono) {
+        this(null, nombre, correo, telefono);
     }
 
-    //constructor que hereda de la clase Persona y el atributo Departamento
-    public Tecnico(String idPersona, String nombre, String correo, String telefono, Rol rol, Departamento departamento) {
-        super(idPersona, nombre, correo, telefono, rol);
-        this.departamento = departamento;
-
-        //this.departamento = departamento; este atributo no se agrega al super porque no lo hereda la clase Persona
-
+    // Getters y Setters
+    public String getIdTecnico() {
+        return idTecnico;
     }
 
-    //Metodos
+    public void setIdTecnico(String idTecnico) {
+        this.idTecnico = idTecnico;
+    }
 
-    //el metodo se implementa cuando un tecnico agarra un ticket pendiente y se encarga de resolverlo
-    //verifica si el tecnico pertenece al departamento del ticket
-    //Asigna el ticket al Tecnico
-    //Cambia el estado del ticket
+    public String getNombre() {
+        return nombre.get();
+    }
 
-    public void atenderTicket(Ticket ticket, EstadoTicket estadoTicket) {
-        if(this.departamento.equals(ticket.getDepartamento())){
-            ticket.setTecnicoAsignado(this);
-            ticket.setEstadoActual(estadoTicket);
-        }
-        else{
-            System.out.println("Verifique que el ticket este en ese departamento");
-        }
+    public void setNombre(String nombre) {
+        this.nombre.set(nombre);
+    }
 
+    public String getCorreo() {
+        return correo.get();
+    }
+
+    public void setCorreo(String correo) {
+        this.correo.set(correo);
+    }
+
+    public String getTelefono() {
+        return telefono.get();
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono.set(telefono);
+    }
+
+    // Propiedades JavaFX para TableView
+    public StringProperty nombreProperty() {
+        return nombre;
+    }
+
+    public StringProperty correoProperty() {
+        return correo;
+    }
+
+    public StringProperty telefonoProperty() {
+        return telefono;
+    }
+
+    @Override
+    public String toString() {
+        return getNombre(); // Para mostrarse correctamente en ListView
     }
 }
