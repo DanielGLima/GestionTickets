@@ -15,7 +15,7 @@
    <children>
       <TextField fx:id="nombreCompletoField" layoutX="119.0" layoutY="83.0" style="-fx-border-color: #000000;" />
       <TextField fx:id="correoField" layoutX="119.0" layoutY="130.0" style="-fx-border-color: #000000;" />
-      <Button fx:id="registrarButton" layoutX="196.0" layoutY="396.0" mnemonicParsing="false" style="-fx-background-color: #e5e7e9; -fx-border-color: #000000;" text="Registrar" />
+      <Button fx:id="registrarButton" layoutX="196.0" layoutY="350.0" mnemonicParsing="false" style="-fx-background-color: #e5e7e9; -fx-border-color: #000000;" text="Registrar" />
       <Text layoutX="14.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre completo" wrappingWidth="118.7418212890625" />
       <Text layoutX="14.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo electronico" />
       <PasswordField fx:id="contrasenaField" layoutX="119.0" layoutY="265.0" style="-fx-border-color: #000000;" />
@@ -36,17 +36,19 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Button fx:id="botonRegresar" layoutX="37.0" layoutY="396.0" mnemonicParsing="false" style="-fx-border-color: #000000;" text="Regresar" />
-      <TableView layoutX="281.0" layoutY="81.0" prefHeight="384.0" prefWidth="574.0">
+      <Button fx:id="botonRegresar" layoutX="37.0" layoutY="350.0" mnemonicParsing="false" style="-fx-border-color: #000000;" text="Regresar" />
+      <TableView fx:id="tablaUsuarios" layoutX="281.0" layoutY="81.0" prefHeight="384.0" prefWidth="563.0">
         <columns>
-          <TableColumn fx:id="ColNombre" prefWidth="177.60003662109375" text="Noimbre" />
-          <TableColumn fx:id="colCorreo" prefWidth="83.20001220703125" text="Correo" />
+          <TableColumn fx:id="ColNombre" prefWidth="155.199951171875" text="Noimbre" />
+          <TableColumn fx:id="colCorreo" prefWidth="107.20004272460938" text="Correo" />
             <TableColumn fx:id="conTelefono" prefWidth="97.5999755859375" text="Telefono" />
-            <TableColumn fx:id="colDepartamento" prefWidth="114.40008544921875" text="Departamento" />
-            <TableColumn fx:id="colContrasenia" prefWidth="102.39996337890625" text="Contraseña" />
+            <TableColumn fx:id="colDepartamento" prefWidth="102.39990234375" text="Departamento" />
+            <TableColumn fx:id="colContrasenia" prefWidth="115.2000732421875" text="Contraseña" />
         </columns>
       </TableView>
       <TextField fx:id="departamentoField" layoutX="119.0" layoutY="222.0" style="-fx-border-color: #000000;" />
       <Text layoutX="14.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Departamento" wrappingWidth="118.7418212890625" />
+      <Button fx:id="botonActualizar" layoutX="196.0" layoutY="424.0" mnemonicParsing="false" style="-fx-border-color: #000000;" text="Actualizar" />
+      <Button fx:id="botonEliminar" layoutX="37.0" layoutY="424.0" mnemonicParsing="false" style="-fx-border-color: #000000;" text="Eliminar" />
    </children>
 </AnchorPane>
