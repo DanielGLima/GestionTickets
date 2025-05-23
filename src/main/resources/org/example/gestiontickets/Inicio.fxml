@@ -11,16 +11,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestiontickets.InicioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gestiontickets.InicioController">
    <children>
       <AnchorPane layoutX="-1.0" maxHeight="-1.0" maxWidth="-1.0" prefHeight="483.0" prefWidth="853.0" style="-fx-background-color: #7f8c8d;">
          <children>
-            <TextField fx:id="usuarioField" layoutX="597.0" layoutY="122.0" style="-fx-border-color: #000000;" />
-            <PasswordField fx:id="contrasenaField" layoutX="597.0" layoutY="169.0" style="-fx-border-color: #000000;" />
-            <Button fx:id="entrarButton" layoutX="686.0" layoutY="238.0" mnemonicParsing="false" style="-fx-background-color: #e5e7e9; -fx-border-color: #000000;" text="ENTRAR" />
-            <Text layoutX="379.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario" wrappingWidth="95.54180908203125" />
-            <Text layoutX="379.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña" />
+            <TextField fx:id="usuarioField" layoutX="596.0" layoutY="167.0" style="-fx-border-color: #000000;" />
+            <PasswordField fx:id="contrasenaField" layoutX="596.0" layoutY="214.0" style="-fx-border-color: #000000;" />
+            <Button fx:id="entrarButton" layoutX="534.0" layoutY="379.0" mnemonicParsing="false" style="-fx-background-color: #e5e7e9; -fx-border-color: #000000;" text="ENTRAR" />
+            <Text layoutX="378.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" wrappingWidth="95.54180908203125">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+            <Text layoutX="378.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña:">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
             <Pane layoutX="48.0" layoutY="196.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #7f8c8d;">
                <children>
                   <Text layoutX="52.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SISTEMA">
@@ -41,8 +46,6 @@
                </children>
             </Pane>
             <Line endY="-58.0" layoutX="274.0" layoutY="114.0" startY="293.0" />
-            <Button fx:id="crearUsuarioButton" layoutX="374.0" layoutY="338.0" mnemonicParsing="false" style="-fx-background-color: #7f8c8d;" text="CREAR USUARIO" />
-            <Button layoutX="599.0" layoutY="338.0" mnemonicParsing="false" style="-fx-background-color: #7f8c8d; -fx-text-fill: #32464f;;" text="Olvidaste tu contraseña?" />
             <AnchorPane layoutX="40.0" layoutY="27.0" prefHeight="200.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="152.0" fitWidth="175.0" layoutX="34.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">

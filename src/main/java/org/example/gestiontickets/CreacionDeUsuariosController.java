@@ -18,20 +18,20 @@ public class CreacionDeUsuariosController {
     @FXML private PasswordField contrasenaField;
     @FXML private PasswordField confirmarContrasenaField;
     @FXML private Button registrarButton;
-    @FXML private Button volverButton;
+    @FXML private Button botonRegresar;
 
     @FXML
     public void initialize() {
-        volverButton.setOnAction(event -> volverAlInicio());
+        botonRegresar.setOnAction(event -> volverAlInicio());
         registrarButton.setOnAction(event -> registrarUsuario());
     }
 
     private void volverAlInicio() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Inicio.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AdministradorDashboard.fxml"));
             Parent root = loader.load();
 
-            Stage stage = (Stage) volverButton.getScene().getWindow();
+            Stage stage = (Stage) botonRegresar.getScene().getWindow();
             stage.setScene(new Scene(root, 853, 483));
             stage.setTitle("Inicio de Sesión");
             stage.show();
