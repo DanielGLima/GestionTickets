@@ -7,8 +7,14 @@ import gestionTickets.Tecnico;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class GestionDepartamentosController {
 
@@ -24,6 +30,7 @@ public class GestionDepartamentosController {
     @FXML private Button botonEditar;
     @FXML private Button botonEliminar;
     @FXML private Button botonAsignar;
+    @FXML private Button botonRegresar;
 
     @FXML private ImageView Exit;
     @FXML private ImageView inicio;
@@ -36,6 +43,7 @@ public class GestionDepartamentosController {
 
     @FXML
     public void initialize() {
+        botonRegresar.setOnAction(event -> volverAlInicio());
         colNombre.setCellValueFactory(d -> d.getValue().nombreProperty());
         colDescripcion.setCellValueFactory(d -> d.getValue().descripcionProperty());
 
@@ -54,6 +62,30 @@ public class GestionDepartamentosController {
         });
 
 
+    }
+
+    private void mostrarAlerta(Alert.AlertType tipo, String titulo, String mensaje) {
+        Alert alert = new Alert(tipo);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
+    private void volverAlInicio() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AdministradorDashboard.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) botonRegresar.getScene().getWindow();
+            stage.setScene(new Scene(root, 853, 483));
+            stage.setTitle("Inicio de Sesión");
+            stage.show();
+
+        } catch (IOException e) {
+            mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo cargar la vista de inicio.");
+            e.printStackTrace();
+        }
     }
 
     private void cargarDepartamentos() {

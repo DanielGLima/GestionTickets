@@ -88,31 +88,50 @@ public class CreacionDeUsuariosController {
         String correo = correoField.getText();
         String telefono = telefonoField.getText();
         String contrasena = contrasenaField.getText();
-        String departamento = departamentoField.getText();
+        String nombreDepartamento = departamentoField.getText();
 
-        if (nombre.isBlank() || correo.isBlank() || telefono.isBlank() || contrasena.isBlank() || departamento.isBlank()) {
+        if (nombre.isBlank() || correo.isBlank() || telefono.isBlank() || contrasena.isBlank() || nombreDepartamento.isBlank()) {
             mostrarAlerta(Alert.AlertType.WARNING, "Campos vacíos", "Por favor completa todos los campos.");
             return;
         }
 
-        UsuarioCRUD crud = new UsuarioCRUD();
-        boolean exito = crud.insertarUsuario(
-                nombre,
-                correo,
-                correo,    // como nombre_usuario
-                contrasena,
-                "3",       // rol_id de Usuario Común
-                departamento // debes validar que sea un ID numérico o hacer conversión
-        );
+        try (Connection conn = ConexionDB.conectar()) {
+            // Obtener departamento_id a partir del nombre
+            PreparedStatement stmtDep = conn.prepareStatement("SELECT departamento_id FROM departamento WHERE nombre = ?");
+            stmtDep.setString(1, nombreDepartamento);
+            ResultSet rsDep = stmtDep.executeQuery();
 
-        if (exito) {
+            if (!rsDep.next()) {
+                mostrarAlerta(Alert.AlertType.ERROR, "Departamento no encontrado", "No existe un departamento con ese nombre.");
+                return;
+            }
+
+            int departamentoId = rsDep.getInt("departamento_id");
+
+            // Insertar usuario
+            PreparedStatement stmt = conn.prepareStatement("""
+            INSERT INTO usuario (nombre_completo, correo_electronico, nombre_usuario, telefono, contrasena, rol_id, departamento_id)
+            VALUES (?, ?, ?, ?, ?, 3, ?)
+        """);
+
+            stmt.setString(1, nombre);
+            stmt.setString(2, correo);
+            stmt.setString(3, correo); // usando correo como nombre_usuario
+            stmt.setString(4, telefono);
+            stmt.setString(5, contrasena);
+            stmt.setInt(6, departamentoId);
+
+            stmt.executeUpdate();
             mostrarAlerta(Alert.AlertType.INFORMATION, "Éxito", "Usuario registrado correctamente.");
             limpiarCampos();
             cargarUsuarios();
-        } else {
+
+        } catch (Exception e) {
+            e.printStackTrace();
             mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo registrar el usuario.");
         }
     }
+
 
     private void actualizarUsuario() {
         UsuarioTabla usuario = tablaUsuarios.getSelectionModel().getSelectedItem();
@@ -121,30 +140,60 @@ public class CreacionDeUsuariosController {
             return;
         }
 
-        try (Connection conn = ConexionDB.conectar()) {
-            PreparedStatement stmt = conn.prepareStatement("""
-            UPDATE usuario\s
-                                        SET nombre_completo = ?, correo_electronico = ?, telefono = ?, contrasena = ?, departamento_id = (
-                                            SELECT departamento_id FROM departamento WHERE nombre = ?
-                                        )
-                                        WHERE usuario_id = ?
-                                    """);
-                            
-                                    stmt.setString(1, nombreCompletoField.getText());
-                                    stmt.setString(2, correoField.getText());
-                                    stmt.setString(3, telefonoField.getText());
-                                    stmt.setString(4, contrasenaField.getText());
-                                    stmt.setString(5, departamentoField.getText()); // nombre del departamento
-                                    stmt.setInt(6, usuario.getId());
+        String nuevoNombre = nombreCompletoField.getText();
+        String nuevoCorreo = correoField.getText();
+        String nuevoTelefono = telefonoField.getText();
+        String nuevaContrasena = contrasenaField.getText();
+        String nombreDepartamento = departamentoField.getText();
 
-            stmt.executeUpdate();
-            mostrarAlerta(Alert.AlertType.INFORMATION, "Actualizado", "Usuario actualizado correctamente.");
-            cargarUsuarios();
+        if (nuevoNombre.isBlank() || nuevoCorreo.isBlank() || nuevoTelefono.isBlank() || nuevaContrasena.isBlank() || nombreDepartamento.isBlank()) {
+            mostrarAlerta(Alert.AlertType.WARNING, "Campos vacíos", "Por favor completa todos los campos.");
+            return;
+        }
+
+        try (Connection conn = ConexionDB.conectar()) {
+            // Verificamos si el departamento existe
+            PreparedStatement checkDep = conn.prepareStatement("SELECT departamento_id FROM departamento WHERE nombre = ?");
+            checkDep.setString(1, nombreDepartamento);
+            ResultSet rsDep = checkDep.executeQuery();
+
+            if (!rsDep.next()) {
+                mostrarAlerta(Alert.AlertType.ERROR, "Departamento no encontrado", "No existe un departamento con ese nombre.");
+                return;
+            }
+
+            int departamentoId = rsDep.getInt("departamento_id");
+
+            // Procedemos a actualizar
+            PreparedStatement stmt = conn.prepareStatement("""
+            UPDATE usuario 
+            SET nombre_completo = ?, correo_electronico = ?, telefono = ?, contrasena = ?, departamento_id = ?
+            WHERE usuario_id = ?
+        """);
+
+            stmt.setString(1, nuevoNombre);
+            stmt.setString(2, nuevoCorreo);
+            stmt.setString(3, nuevoTelefono);
+            stmt.setString(4, nuevaContrasena);
+            stmt.setInt(5, departamentoId);
+            stmt.setInt(6, usuario.getId());
+
+            int filas = stmt.executeUpdate();
+
+            if (filas > 0) {
+                mostrarAlerta(Alert.AlertType.INFORMATION, "Actualizado", "Usuario actualizado correctamente.");
+                cargarUsuarios();
+                limpiarCampos();
+            } else {
+                mostrarAlerta(Alert.AlertType.WARNING, "Sin cambios", "No se realizó ningún cambio.");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo actualizar el usuario.");
         }
     }
+
 
     private void eliminarUsuario() {
         UsuarioTabla usuario = tablaUsuarios.getSelectionModel().getSelectedItem();

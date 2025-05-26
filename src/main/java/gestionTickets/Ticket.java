@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ticket {
-    private String idTicket;
+    private int idTicket;
     private String titulo;
     private String descripcion;
+    private String prioridad;
     private LocalDateTime fechaCreacion;
     private EstadoTicket estadoActual;
     private Usuario usuarioCreador;
@@ -21,10 +22,11 @@ public class Ticket {
     //Constructor
 
 
-    public Ticket(String idTicket, String titulo, String descripcion, LocalDateTime fechaCreacion, EstadoTicket estadoActual, Usuario usuarioCreador, Tecnico tecnicoAsignado, Departamento departamento, List<Nota> notas, List<Ticket> ticketsDelSistema) {
+    public Ticket(int idTicket, String titulo, String descripcion,String prioridad, LocalDateTime fechaCreacion, EstadoTicket estadoActual, Usuario usuarioCreador, Tecnico tecnicoAsignado, Departamento departamento, List<Nota> notas, List<Ticket> ticketsDelSistema) {
         this.idTicket = idTicket;
         this.titulo = titulo;
         this.descripcion = descripcion;
+        this.prioridad = prioridad;
         this.fechaCreacion = fechaCreacion;
         this.estadoActual = estadoActual;
         this.usuarioCreador = usuarioCreador;
@@ -36,11 +38,11 @@ public class Ticket {
 
     //Getters y Setters
 
-    public String getIdTicket() {
+    public int getIdTicket() {
         return idTicket;
     }
 
-    public void setIdTicket(String idTicket) {
+    public void setIdTicket(int idTicket) {
         this.idTicket = idTicket;
     }
 
@@ -58,6 +60,12 @@ public class Ticket {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    public String getPrioridad() {
+        return prioridad;
+    }
+    public void setPrioridad(String prioridad) {
+        this.prioridad = prioridad;
     }
 
     public LocalDateTime getFechaCreacion() {

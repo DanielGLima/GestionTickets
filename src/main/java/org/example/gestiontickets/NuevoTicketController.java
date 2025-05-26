@@ -81,10 +81,21 @@ public class NuevoTicketController {
         Departamento departamento = boxDepartamento.getValue();
         String prioridad = boxPrioridad.getValue();
 
-        if (titulo.isEmpty() || descripcion.isEmpty() || departamento == null || prioridad == null) {
-            mostrarAlerta("Campos incompletos", "Por favor, complete todos los campos", Alert.AlertType.WARNING);
+        if (titulo.isBlank() || titulo.length() < 3 || titulo.length() > 100) {
+            mostrarAlerta("Error en el título", "El título debe tener entre 3 y 100 caracteres.", Alert.AlertType.WARNING);
             return;
         }
+
+        if (descripcion.isBlank() || descripcion.length() < 5) {
+            mostrarAlerta("Error en la descripción", "La descripción debe tener al menos 5 caracteres.", Alert.AlertType.WARNING);
+            return;
+        }
+
+        if (departamento == null || prioridad == null) {
+            mostrarAlerta("Campos incompletos", "Seleccione un departamento y una prioridad.", Alert.AlertType.WARNING);
+            return;
+        }
+
 
         String sql = "INSERT INTO Ticket (titulo, descripcion, estado_id, usuario_id, tecnico_id, departamento_id, prioridad) " +
                 "VALUES (?, ?, ?, ?, NULL, ?, ?)";

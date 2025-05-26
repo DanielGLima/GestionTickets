@@ -72,13 +72,14 @@ public class GestionTicketsController {
     private void cargarTickets() {
         listaTickets.clear();
         String sql = """
-        SELECT t.ticket_id, t.titulo, e.nombre AS estado, t.prioridad,
+                SELECT t.ticket_id, t.titulo, t.descripcion, e.nombre AS estado, t.prioridad,
                COALESCE(u.nombre_completo, 'Sin asignar') AS tecnico,
                d.nombre AS departamento
         FROM ticket t
         JOIN estadoticket e ON t.estado_id = e.estado_id
         JOIN departamento d ON t.departamento_id = d.departamento_id
         LEFT JOIN usuario u ON t.tecnico_id = u.usuario_id
+        
         """;
 
         try (Connection conn = ConexionDB.conectar();
@@ -92,7 +93,8 @@ public class GestionTicketsController {
                         rs.getString("estado"),
                         rs.getString("prioridad"),
                         rs.getString("tecnico"),
-                        rs.getString("departamento")
+                        rs.getString("departamento"),
+                        rs.getString("descripcion")
                 ));
             }
 
@@ -143,15 +145,17 @@ public class GestionTicketsController {
         }
 
         String detalle = String.format(
-                "ID: %d\nTítulo: %s\nEstado: %s\nPrioridad: %s\nTécnico: %s\nDepartamento: %s\nFecha creación: %s",
+                "ID: %d\nTítulo: %s\nEstado: %s\nPrioridad: %s\nTécnico: %s\nDepartamento: %s\nFecha creación: %s\n\nDescripción:\n%s",
                 ticket.getId(),
                 ticket.getTitulo(),
                 ticket.getEstado(),
                 ticket.getPrioridad(),
                 ticket.getTecnico(),
                 ticket.getDepartamento(),
-                obtenerFechaHoraTicket(ticket.getId())
+                obtenerFechaHoraTicket(ticket.getId()),
+                ticket.getDescripcion()
         );
+
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Detalle del Ticket");

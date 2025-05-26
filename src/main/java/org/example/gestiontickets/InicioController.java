@@ -63,10 +63,10 @@ public class InicioController {
                             abrirPantalla("AdministradorDashboard.fxml", "Administrador");
                             break;
                         case 2: // Técnico
-                            mostrarAlerta("Acceso restringido", "Este panel es solo para administradores.");
+                            abrirPantalla("TecnicosDashboard.fxml", "Tecnicos.");
                             break;
                         case 3: // Usuario común
-                            mostrarAlerta("Acceso restringido", "Este panel es solo para administradores.");
+                            abrirPantalla("UsuarioDashboard.fxml", "Usuarios");
                             break;
                         default:
                             mostrarAlerta("Rol no reconocido", "El rol del usuario no es válido.");

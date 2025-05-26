@@ -23,14 +23,17 @@ public class TecnicoCRUD {
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()){
 
-            while (rs.next()){
+            while (rs.next()) {
                 Tecnico t = new Tecnico(
-                        String.valueOf(rs.getInt("usuario_id")),
+                        rs.getInt("usuario_id"),
                         rs.getString("nombre_completo"),
                         rs.getString("correo_electronico"),
-                        rs.getString("telefono"));
+                        rs.getString("telefono"),
+                        null
+                );
                 listaTecnicos.add(t);
             }
+
         }catch (Exception e){
             e.printStackTrace();
         }

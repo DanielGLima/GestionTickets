@@ -7,14 +7,16 @@ public class TicketTabla {
     private String prioridad;
     private String tecnico;
     private String departamento;
+    private final String descripcion;
 
-    public TicketTabla(int id, String titulo, String estado, String prioridad, String tecnico, String departamento) {
+    public TicketTabla(int id, String titulo, String estado, String prioridad, String tecnico, String departamento, String descripcion) {
         this.id = id;
         this.titulo = titulo;
         this.estado = estado;
         this.prioridad = prioridad;
         this.tecnico = tecnico;
         this.departamento = departamento;
+        this.descripcion = descripcion;
     }
 
     public int getId() { return id; }
@@ -23,4 +25,5 @@ public class TicketTabla {
     public String getPrioridad() { return prioridad; }
     public String getTecnico() { return tecnico; }
     public String getDepartamento() { return departamento; }
+    public String getDescripcion() { return descripcion; }
 }

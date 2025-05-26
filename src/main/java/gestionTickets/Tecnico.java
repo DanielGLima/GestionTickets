@@ -3,74 +3,40 @@ package gestionTickets;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Tecnico {
+public class Tecnico extends Usuario {
 
-    private String idTecnico;
-    private final StringProperty nombre;
-    private final StringProperty correo;
-    private final StringProperty telefono;
+    // Propiedades JavaFX (opcionales para TableView)
+    private final StringProperty nombreProperty;
+    private final StringProperty correoProperty;
+    private final StringProperty telefonoProperty;
 
-    // Constructor con ID
-    public Tecnico(String idTecnico, String nombre, String correo, String telefono) {
-        this.idTecnico = idTecnico;
-        this.nombre = new SimpleStringProperty(nombre);
-        this.correo = new SimpleStringProperty(correo);
-        this.telefono = new SimpleStringProperty(telefono);
+    public Tecnico(int idPersona, String nombre, String correo, String telefono, Rol rol) {
+        super(idPersona, nombre, correo, telefono, rol);
+        this.nombreProperty = new SimpleStringProperty(nombre);
+        this.correoProperty = new SimpleStringProperty(correo);
+        this.telefonoProperty = new SimpleStringProperty(telefono);
     }
 
-    // Constructor sin ID (para pruebas o creación desde interfaz)
+    // Constructores adicionales si se requieren
     public Tecnico(String nombre, String correo, String telefono) {
-        this(null, nombre, correo, telefono);
-    }
-
-    // Getters y Setters
-    public String getIdTecnico() {
-        return idTecnico;
-    }
-
-    public void setIdTecnico(String idTecnico) {
-        this.idTecnico = idTecnico;
-    }
-
-    public String getNombre() {
-        return nombre.get();
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre.set(nombre);
-    }
-
-    public String getCorreo() {
-        return correo.get();
-    }
-
-    public void setCorreo(String correo) {
-        this.correo.set(correo);
-    }
-
-    public String getTelefono() {
-        return telefono.get();
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono.set(telefono);
+        this(0, nombre, correo, telefono, null); // puedes asignar un Rol por defecto si necesitas
     }
 
     // Propiedades JavaFX para TableView
     public StringProperty nombreProperty() {
-        return nombre;
+        return nombreProperty;
     }
 
     public StringProperty correoProperty() {
-        return correo;
+        return correoProperty;
     }
 
     public StringProperty telefonoProperty() {
-        return telefono;
+        return telefonoProperty;
     }
 
     @Override
     public String toString() {
-        return getNombre(); // Para mostrarse correctamente en ListView
+        return getNombre(); // heredado de Persona
     }
 }

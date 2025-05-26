@@ -86,7 +86,7 @@ public class DepartamentoCRUD {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             for (Tecnico tecnico : tecnicos) {
-                stmt.setInt(1, Integer.parseInt(tecnico.getIdTecnico()));
+                stmt.setInt(1, tecnico.getIdPersona());
                 stmt.setInt(2, Integer.parseInt(idDepartamento));
                 stmt.addBatch();
             }

@@ -2,20 +2,27 @@ package gestionTickets;
 
 public abstract class Persona {
 
-    private String idPersona;
+    private int idPersona;  // CAMBIO: ahora es int
     private String nombre;
     private String correo;
     private String telefono;
     private Rol rol;
 
+    // Constructor
+    public Persona(int idPersona, String nombre, String correo, String telefono, Rol rol) {
+        this.idPersona = idPersona;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.rol = rol;
+    }
 
-    //Getters y Setters
-
-    public String getIdPersona() {
+    // Getters y Setters
+    public int getIdPersona() {
         return idPersona;
     }
 
-    public void setIdPersona(String idPersona) {
+    public void setIdPersona(int idPersona) {
         this.idPersona = idPersona;
     }
 
@@ -49,15 +56,5 @@ public abstract class Persona {
 
     public void setRol(Rol rol) {
         this.rol = rol;
-    }
-
-    //constructor para que reciba todos los atributos como parametros
-        public Persona(String idPersona, String nombre, String correo, String telefono, Rol rol) {
-        this.idPersona = idPersona;
-        this.nombre = nombre;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.rol = rol;
-
     }
 }
